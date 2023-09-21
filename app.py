@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify
 import joblib
 import numpy as np
-from ..features import FeatureExtraction  # Assuming FeatureExtraction is defined in 'features.py'
+from features import FeatureExtraction  # Assuming FeatureExtraction is defined in 'features.py'
 
 app = Flask(__name__)
 
-gbc = joblib.load('../gbc_final_model.pkl')
+gbc = joblib.load('gbc_final_model.pkl')
 
 @app.route('/', methods=['GET'])
 def hello():
@@ -43,6 +43,6 @@ def predict():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-if __name__ == '__main__':
-    # Use Gunicorn to run the application
-    app.run()
+# if __name__ == '__main__':
+#     # Use Gunicorn to run the application
+#     app.run()
