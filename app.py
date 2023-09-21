@@ -8,6 +8,11 @@ app = Flask(__name__)
 gbc = joblib.load('gbc_final_model.pkl')
 
 
+app.route('/', methods=['GET'])
+def hello():
+    response = {"result": "hello world"}
+    return jsonify(response), 200
+
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
