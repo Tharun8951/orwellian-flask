@@ -1,11 +1,11 @@
 {
     "builds": [
         {
-            "src": "app.py",
+            "src": "requirements.txt",
             "use": "@vercel/python"
         },
         {
-            "src": "requirements.txt",
+            "src": "app.py",
             "use": "@vercel/python"
         }
     ],
