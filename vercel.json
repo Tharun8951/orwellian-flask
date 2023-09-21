@@ -1,21 +1,24 @@
 {
-    "builds": [
-        {
-            "src": "requirements.txt",
-            "use": "@vercel/python",
-            "config": {
-                "buildCommand": "python -m pip install -r requirements.txt"
-            }
-        },
-        {
-            "src": "app.py",
-            "use": "@vercel/python"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "app.py"
-        }
-    ]
+  "builds": [
+    {
+      "src": "requirements.txt",
+      "use": "@vercel/python",
+      "config": {
+        "buildCommand": "python -m pip install -r requirements.txt"
+      }
+    },
+    {
+      "src": "app/main.py",
+      "use": "@vercel/python",
+      "config": {
+        "command": "gunicorn -b :$PORT main:app"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app/main.py"
+    }
+  ]
 }
